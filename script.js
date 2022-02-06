@@ -1,5 +1,6 @@
 class RGB {
     static Black = new RGB(0, 0, 0);
+    static White = new RGB(255, 255, 255);
 
     constructor(red, green, blue){
         this.red = red;
@@ -44,10 +45,10 @@ const randomInt = (min, max) =>
 
 
 
-const defaultCellColor = 'white';
+const defaultCellColor = RGB.White;
 function clearGrid(gridElement){
     const cells = gridElement.querySelectorAll('.cell');
-    cells.forEach(cell => cell.style.backgroundColor = defaultCellColor);
+    cells.forEach(cell => cell.style.backgroundColor = defaultCellColor.toString());
 }
 
 function genGridCells(gridElement, cellsPerSide){
@@ -64,7 +65,7 @@ function createCells(cellSizePx, amount){
         cells.push(createCell(cellSizePx));
     cells.forEach(cell => {
         cell.addEventListener('mouseover', handleMouseOverCell);
-        cell.style.backgroundColor = defaultCellColor;
+        cell.style.backgroundColor = defaultCellColor.toString();
     });
     return cells;
 }
