@@ -73,7 +73,7 @@ function createCells(cellSizePx, amount){
 function handleMouseOverCell(event){
     const element = event.currentTarget;
     const currentColor = getBackgroundColor(element);
-    const newColor = RGB.average(currentColor, Black);
+    const newColor = RGB.average(currentColor, RGB.Black);
     element.style.backgroundColor = newColor.toString();
 }
 
