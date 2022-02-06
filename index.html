@@ -8,7 +8,11 @@
 </head>
 <body>
     <div id='control-panel'>
-        <button id='clear-button'>Clear field</button>
+        <button class='button' id='clear-button'>Clear field</button>
+        <!-- TODO make proper number validation -->
+        <input id='side-size-input' type='number' autocomplete='off'
+            placeholder='Grid side size' min='1' max='100'>
+        <button class='button' id='resize-button'>Resize field</button>
     </div>
     <div id='cells-grid'></div>
 </body>

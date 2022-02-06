@@ -29,6 +29,12 @@ function createCell(sizePx){
     return cell;
 }
 
+function changeGridCellAmount(gridElement, sizeElement){
+    const sideSize = Number.parseInt(sizeElement.value);
+    sizeElement.value = '';
+    genGridCells(gridElement, sideSize);
+}
+
 function main(){
     const gridElement = document.getElementById('cells-grid');
     const startCellsPerSideAmount = 16;
@@ -36,6 +42,11 @@ function main(){
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) =>
         clearGrid(gridElement))
+
+    const gridSideSizeElement = document.getElementById('side-size-input');
+    const resizeButton = document.getElementById('resize-button');
+    resizeButton.addEventListener('click', (e) =>
+        changeGridCellAmount(gridElement, gridSideSizeElement));
 
     genGridCells(gridElement, startCellsPerSideAmount);
 }
