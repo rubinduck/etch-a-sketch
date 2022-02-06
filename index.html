@@ -8,10 +8,10 @@
 </head>
 <body>
     <div id='control-panel'>
-        <button class='button' id='clear-button'>Clear field</button>
-        <input id='side-size-input' type='number'
-            autocomplete='off' placeholder='Grid side size(2-100)'>
+        <button class='button' id='clear-button'>Clear</button>
         <button class='button' id='resize-button'>Resize field</button>
+        <input id='side-size-input' type='number' autocomplete='off'
+            min='2' max='100'>
     </div>
     <div id='cells-grid'></div>
 </body>

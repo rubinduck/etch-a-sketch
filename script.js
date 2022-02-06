@@ -146,6 +146,8 @@ function main(){
 
     const gridSideSizeElement = document.getElementById('side-size-input');
     gridSideSizeElement.addEventListener('input', fitlerNotInts)
+    gridSideSizeElement.value = startCellsPerSideAmount;
+
     const resizeButton = document.getElementById('resize-button');
     resizeButton.addEventListener('click', (e) => handleResizeButton(grid, gridSideSizeElement));
 }
