@@ -40,6 +40,7 @@ class RGB {
     }
 }
 
+//TODO add drawing only when mouse is pressed
 const randomInt = (min, max) =>
     Math.floor(Math.random() * (max - min) + min);
 
@@ -85,16 +86,35 @@ function createCell(sizePx){
     return cell;
 }
 
-function changeGridCellAmount(gridElement, sizeElement){
-    const sideSize = Number.parseInt(sizeElement.value);
-    sizeElement.value = '';
-    genGridCells(gridElement, sideSize);
-}
-
 function getBackgroundColor(element){
     return RGB.fromString(window.getComputedStyle(element).backgroundColor);
 }
 
+function fitlerNotInts(event){
+    if (!event.data)
+        return;
+    const newData = event.data;
+    const target = event.currentTarget;
+    if (!isInt(newData))
+        target.value = target.value.replace(newData, '');
+}
+
+function isInt(string){
+    for (let char of string){
+        if (char < '0' || char > '9')
+            return false;
+    }
+    return true;
+}
+
+function handleResizeButton(gridElement, gridSizeElement){
+    const newSideSize = Number.parseInt(gridSizeElement.value);
+    if (newSideSize < 2 || newSideSize > 100){
+        alert('Side must be between 2 and 100');
+        return;
+    }
+    genGridCells(gridElement, newSideSize);
+}
 
 function main(){
     const gridElement = document.getElementById('cells-grid');
@@ -105,9 +125,10 @@ function main(){
         clearGrid(gridElement))
 
     const gridSideSizeElement = document.getElementById('side-size-input');
+    gridSideSizeElement.addEventListener('input', fitlerNotInts)
     const resizeButton = document.getElementById('resize-button');
     resizeButton.addEventListener('click', (e) =>
-        changeGridCellAmount(gridElement, gridSideSizeElement));
+        handleResizeButton(gridElement, gridSideSizeElement));
 
     genGridCells(gridElement, startCellsPerSideAmount);
 }
