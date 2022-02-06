@@ -16,12 +16,18 @@ function createCells(cellSizePx, amount){
     const cells = [];
     for (let i = 0; i < amount; i++)
         cells.push(createCell(cellSizePx));
-    cells.forEach(cell => cell.addEventListener('mouseover', handleMouseOverCell));
+    cells.forEach(cell => {
+        cell.addEventListener('mouseover', handleMouseOverCell);
+        cell.style.backgroundColor = defaultCellColor;
+    });
     return cells;
 }
 
 function handleMouseOverCell(event){
-    event.currentTarget.style.backgroundColor = genRandomRGB();
+    const element = event.currentTarget;
+    const currentColor = getBackgroundColor(element);
+    const newColor = RGB.average(currentColor, Black);
+    element.style.backgroundColor = newColor.toString();
 }
 
 function createCell(sizePx){
@@ -38,11 +44,50 @@ function changeGridCellAmount(gridElement, sizeElement){
     genGridCells(gridElement, sideSize);
 }
 
-function genRandomRGB(){
-    const red = randomInt(0, 255);
-    const green = randomInt(0, 255);
-    const blue = randomInt(0, 255);
-    return `rgb(${red}, ${green}, ${blue})`
+function getBackgroundColor(element){
+    return RGB.fromString(window.getComputedStyle(element).backgroundColor);
+}
+
+
+class RGB {
+    static Black = new RGB(0, 0, 0);
+
+    constructor(red, green, blue){
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
+
+    toString(){
+        return `rgb(${this.red}, ${this.green}, ${this.blue})`;
+    }
+    
+    static genRandom(){
+        return new RGB(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255))
+    }
+
+    static fromString(string){
+        string = string
+            .replace('rgba', '')
+            .replace('rgb', '')
+            .replace('(', '')
+            .replace(')', '');
+        const colors = string.split(',');
+        return new RGB(
+            Number.parseInt(colors[0]),
+            Number.parseInt(colors[1]),
+            Number.parseInt(colors[2]),
+            
+        );
+    }
+
+    static average(a, b){
+        return new RGB(
+            Math.round((a.red + b.red) / 2),
+            Math.round((a.green + b.green) / 2),
+            Math.round((a.blue + b.blue) / 2)
+        )
+    }
 }
 
 const randomInt = (min, max) =>
