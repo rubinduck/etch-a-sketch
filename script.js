@@ -2,11 +2,10 @@ function genGridCells(gridElement, cellsPerSide){
     const cellAmount = cellsPerSide * cellsPerSide;
     const gridSideSize = gridElement.clientHeight;
     const cellSize = gridSideSize / cellsPerSide;
-    const cells = createCells(cellSize, cellAmount);
-    cells.forEach(cell => gridElement.appendChild(cell))
+    const newCells = createCells(cellSize, cellAmount);
+    gridElement.replaceChildren(...newCells);
 }
 
-// retruns cell elements array
 function createCells(cellSizePx, amount){
     const cells = [];
     for (let i = 0; i < amount; i++)
