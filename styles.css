@@ -27,7 +27,7 @@ body {
     height: 100%;
 }
 
-#cells-container {
+#cells-grid {
     display: flex;
     flex-wrap: wrap;
     width: 700px;

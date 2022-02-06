@@ -1,21 +1,34 @@
-const cellsContainer = document.getElementById('cells-container');
-const containerSize = cellsContainer.height;
-const cellAmount = 16;
-const cells = [];
-
-for (let i = 0; i < cellAmount; i++){
-    const cell = addCell(cellsContainer, containerSize / 4);
-    cells.push(cell);
+function genGridCells(gridElement, cellsPerSide){
+    const cellAmount = cellsPerSide * 4;
+    const gridSideSize = gridElement.clientHeight;
+    const cellSize = gridSideSize / cellsPerSide;
+    const cells = createCells(cellSize, cellAmount);
+    cells.forEach(cell => gridElement.appendChild(cell))
 }
 
-cells.forEach(cell =>
-    cell.addEventListener('mouseover', (e) => e.currentTarget.classList.add('black')));
+// retruns cell elements array
+function createCells(cellSizePx, amount){
+    const cells = [];
+    for (let i = 0; i < amount; i++)
+        cells.push(createCell(cellSizePx));
+    cells.forEach(cell =>
+        cell.addEventListener('mouseover',
+            (e) => e.currentTarget.classList.add('black')));
+    return cells;
+}
 
-function addCell(gridElement, sizePx){
+function createCell(sizePx){
     const cell = document.createElement('div');
     cell.classList.add('cell');
     cell.style.height = `${sizePx}px`;
     cell.style.width = `${sizePx}px`;
-    gridElement.appendChild(cell);
     return cell;
 }
+
+function main(){
+    const gridElement = document.getElementById('cells-grid');
+    const startCellsPerSideAmount = 4;
+    genGridCells(gridElement, startCellsPerSideAmount);
+}
+
+main();
