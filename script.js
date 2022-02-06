@@ -1,5 +1,5 @@
 function genGridCells(gridElement, cellsPerSide){
-    const cellAmount = cellsPerSide * 4;
+    const cellAmount = cellsPerSide * cellsPerSide;
     const gridSideSize = gridElement.clientHeight;
     const cellSize = gridSideSize / cellsPerSide;
     const cells = createCells(cellSize, cellAmount);
