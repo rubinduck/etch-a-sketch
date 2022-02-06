@@ -1,3 +1,49 @@
+class RGB {
+    static Black = new RGB(0, 0, 0);
+
+    constructor(red, green, blue){
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
+
+    toString(){
+        return `rgb(${this.red}, ${this.green}, ${this.blue})`;
+    }
+    
+    static genRandom(){
+        return new RGB(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255))
+    }
+
+    static fromString(string){
+        string = string
+            .replace('rgba', '')
+            .replace('rgb', '')
+            .replace('(', '')
+            .replace(')', '');
+        const colors = string.split(',');
+        return new RGB(
+            Number.parseInt(colors[0]),
+            Number.parseInt(colors[1]),
+            Number.parseInt(colors[2]),
+            
+        );
+    }
+
+    static average(a, b){
+        return new RGB(
+            Math.round((a.red + b.red) / 2),
+            Math.round((a.green + b.green) / 2),
+            Math.round((a.blue + b.blue) / 2)
+        )
+    }
+}
+
+const randomInt = (min, max) =>
+    Math.floor(Math.random() * (max - min) + min);
+
+
+
 const defaultCellColor = 'white';
 function clearGrid(gridElement){
     const cells = gridElement.querySelectorAll('.cell');
@@ -47,51 +93,6 @@ function changeGridCellAmount(gridElement, sizeElement){
 function getBackgroundColor(element){
     return RGB.fromString(window.getComputedStyle(element).backgroundColor);
 }
-
-
-class RGB {
-    static Black = new RGB(0, 0, 0);
-
-    constructor(red, green, blue){
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-    }
-
-    toString(){
-        return `rgb(${this.red}, ${this.green}, ${this.blue})`;
-    }
-    
-    static genRandom(){
-        return new RGB(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255))
-    }
-
-    static fromString(string){
-        string = string
-            .replace('rgba', '')
-            .replace('rgb', '')
-            .replace('(', '')
-            .replace(')', '');
-        const colors = string.split(',');
-        return new RGB(
-            Number.parseInt(colors[0]),
-            Number.parseInt(colors[1]),
-            Number.parseInt(colors[2]),
-            
-        );
-    }
-
-    static average(a, b){
-        return new RGB(
-            Math.round((a.red + b.red) / 2),
-            Math.round((a.green + b.green) / 2),
-            Math.round((a.blue + b.blue) / 2)
-        )
-    }
-}
-
-const randomInt = (min, max) =>
-    Math.floor(Math.random() * (max - min) + min);
 
 
 function main(){
