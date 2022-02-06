@@ -1,0 +1,40 @@
+/* resets */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+button:focus {
+    outline: 0;
+}
+
+
+/* page styles */
+html {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#cells-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 700px;
+    border: 1px solid black;
+}
+
+.black {
+    background-color: black;
+}
