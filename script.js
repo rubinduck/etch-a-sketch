@@ -1,3 +1,8 @@
+function clearGrid(gridElement){
+    const cells = gridElement.querySelectorAll('.cell');
+    cells.forEach(cell => cell.classList.remove('black'));
+}
+
 function genGridCells(gridElement, cellsPerSide){
     const cellAmount = cellsPerSide * cellsPerSide;
     const gridSideSize = gridElement.clientHeight;
@@ -26,7 +31,12 @@ function createCell(sizePx){
 
 function main(){
     const gridElement = document.getElementById('cells-grid');
-    const startCellsPerSideAmount = 4;
+    const startCellsPerSideAmount = 16;
+
+    const clearButton = document.getElementById('clear-button');
+    clearButton.addEventListener('click',(e) =>
+        clearGrid(gridElement))
+
     genGridCells(gridElement, startCellsPerSideAmount);
 }
 
