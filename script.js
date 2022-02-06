@@ -1,6 +1,7 @@
+const defaultCellColor = 'white';
 function clearGrid(gridElement){
     const cells = gridElement.querySelectorAll('.cell');
-    cells.forEach(cell => cell.classList.remove('black'));
+    cells.forEach(cell => cell.style.backgroundColor = defaultCellColor);
 }
 
 function genGridCells(gridElement, cellsPerSide){
@@ -15,10 +16,12 @@ function createCells(cellSizePx, amount){
     const cells = [];
     for (let i = 0; i < amount; i++)
         cells.push(createCell(cellSizePx));
-    cells.forEach(cell =>
-        cell.addEventListener('mouseover',
-            (e) => e.currentTarget.classList.add('black')));
+    cells.forEach(cell => cell.addEventListener('mouseover', handleMouseOverCell));
     return cells;
+}
+
+function handleMouseOverCell(event){
+    event.currentTarget.style.backgroundColor = genRandomRGB();
 }
 
 function createCell(sizePx){
@@ -34,6 +37,17 @@ function changeGridCellAmount(gridElement, sizeElement){
     sizeElement.value = '';
     genGridCells(gridElement, sideSize);
 }
+
+function genRandomRGB(){
+    const red = randomInt(0, 255);
+    const green = randomInt(0, 255);
+    const blue = randomInt(0, 255);
+    return `rgb(${red}, ${green}, ${blue})`
+}
+
+const randomInt = (min, max) =>
+    Math.floor(Math.random() * (max - min) + min);
+
 
 function main(){
     const gridElement = document.getElementById('cells-grid');
