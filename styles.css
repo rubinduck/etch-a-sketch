@@ -96,3 +96,8 @@ input[type="number"] {
     border: 1px solid black;
 }
 
+/* cell must be unselecteable to not create drag of selected
+elements behaviour */
+.cell {
+    user-select: none;
+}
