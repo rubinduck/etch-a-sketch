@@ -80,6 +80,11 @@ class Grid {
         cells.forEach(cell => {
             cell.addEventListener('mouseover',
                 (event) => this.handleMouseOverCell(event.currentTarget));
+            cell.addEventListener('mousedown',
+                (event) => {
+                    this.isMouseDown = true;
+                    this.handleMouseOverCell(event.currentTarget)
+                });
             setBackgroundColor(cell, this.defaultColor)
         });
         return cells;
