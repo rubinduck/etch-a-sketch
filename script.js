@@ -93,7 +93,6 @@ class Grid {
     }
 
     handleMouseOverCell(event){
-        console.log('here')
         const element = event.currentTarget;
         const currentColor = getBackgroundColor(element);
         const newColor = RGB.average(currentColor, RGB.Black);
