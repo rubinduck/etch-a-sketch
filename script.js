@@ -40,7 +40,6 @@ class RGB {
     }
 }
 
-//TODO add drawing only when mouse is pressed
 const randomInt = (min, max) =>
     Math.floor(Math.random() * (max - min) + min);
 
@@ -49,6 +48,7 @@ const randomInt = (min, max) =>
 class Grid {
     defaultColor = RGB.White;
     drawingColor = RGB.Black;
+    isMouseDown = false;
     gridElement;
     cellElements = [];
     sideSizePx;
@@ -78,7 +78,8 @@ class Grid {
         for (let i = 0; i < amount; i++)
             cells.push(this.#createCell(cellSizePx));
         cells.forEach(cell => {
-            cell.addEventListener('mouseover', this.handleMouseOverCell);
+            cell.addEventListener('mouseover',
+                (event) => this.handleMouseOverCell(event.currentTarget));
             setBackgroundColor(cell, this.defaultColor)
         });
         return cells;
@@ -92,11 +93,11 @@ class Grid {
         return cell;
     }
 
-    handleMouseOverCell(event){
-        const element = event.currentTarget;
-        const currentColor = getBackgroundColor(element);
+    handleMouseOverCell(cellElement){
+        if (!this.isMouseDown) return;
+        const currentColor = getBackgroundColor(cellElement);
         const newColor = RGB.average(currentColor, RGB.Black);
-        setBackgroundColor(element, newColor)
+        setBackgroundColor(cellElement, newColor)
     }
 }
 
@@ -139,6 +140,9 @@ function main(){
     const gridElement = document.getElementById('cells-grid');
     const startCellsPerSideAmount = 16;
     const grid = new Grid(gridElement, startCellsPerSideAmount);
+
+    document.addEventListener('mousedown', () => grid.isMouseDown = true);
+    document.addEventListener('mouseup', () => grid.isMouseDown = false);
 
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) => grid.clear())
