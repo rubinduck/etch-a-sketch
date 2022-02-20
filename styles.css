@@ -78,6 +78,13 @@ input[type="number"] {
     border: 1px solid grey;
 }
 
+.text {
+    font-size: 1.5rem;
+}
+
+#draw-invitation {
+    align-self: center;
+}
 
 
 /* grid part */
