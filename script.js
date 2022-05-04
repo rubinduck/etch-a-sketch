@@ -51,10 +51,8 @@ class Grid {
     isMouseDown = false;
     gridElement;
     cellElements = [];
-    sideSizePx;
     constructor(gridElement, cellsPerSide){
         this.gridElement = gridElement;
-        this.sideSizePx = gridElement.clientHeight;
         this.#spawnGridCells(cellsPerSide);
     }
 
