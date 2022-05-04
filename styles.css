@@ -21,7 +21,13 @@ button:focus {
 /* page styles */
 
 :root {
-    --main-size: 700px;
+    --main-size: 500px;
+}
+
+@media (min-height: 700px){
+    :root {
+        --main-size: 700px;
+    }
 }
 
 html {
@@ -39,12 +45,23 @@ body {
 }
 
 
+#draw-invitation {
+    align-self: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.grid-and-controls-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
 /* control panel part */
 #control-panel {
-    margin: 0.5rem 0 ;
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    width: var(--main-size);
 }
 
 .button {
@@ -76,14 +93,6 @@ input[type="number"] {
     padding: 0.75rem 0.5rem;
     border-radius: 0.8rem;
     border: 1px solid grey;
-}
-
-.text {
-    font-size: 1.5rem;
-}
-
-#draw-invitation {
-    align-self: center;
 }
 
 

@@ -7,13 +7,17 @@
     <script defer src='script.js'></script>
 </head>
 <body>
-    <div id='control-panel'>
-        <button class='button' id='clear-button'>Clear</button>
-        <button class='button' id='resize-button'>Resize field</button>
-        <input id='side-size-input' type='number' autocomplete='off'
-            min='2' max='100'>
-        <span class='text' id='draw-invitation'>To draw hover over and press left button</span>
+    <span class='text' id='draw-invitation'>To draw hover over and press left button</span>
+    <div class='grid-and-controls-container'>
+        <div id='cells-grid'></div>
+        <div id='control-panel'>
+            <div id='resize-controls'>
+                <input id='side-size-input' type='number' autocomplete='off'
+                min='2' max='100'>
+                <button class='button' id='resize-button'>Resize field</button>
+            </div>
+            <button class='button' id='clear-button'>Clear</button>
+        </div>
     </div>
-    <div id='cells-grid'></div>
 </body>
 </html>
