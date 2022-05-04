@@ -75,7 +75,7 @@ class Grid {
     #createCells(cellSizeInPercent, amount){
         const cells = [];
         for (let i = 0; i < amount; i++)
-            cells.push(this.#createCell(cellSizeInPercent));
+            cells.push(this.#createCell(cellSizeInPercent, this.cellDefaultColor));
         cells.forEach(cell => {
             cell.addEventListener('mouseover',
                 event => this.handleMouseOverCell(event.currentTarget));
@@ -84,16 +84,16 @@ class Grid {
                     this.isMouseDown = true;
                     this.handleMouseOverCell(event.currentTarget)
                 });
-            setBackgroundColor(cell, this.cellDefaultColor)
         });
         return cells;
     }
 
-    #createCell(sizeInPercent){
+    #createCell(sizeInPercent, backgroundColor){
         const cell = document.createElement('div');
         cell.classList.add('cell');
         cell.style.height = `${sizeInPercent}%`;
         cell.style.width = `${sizeInPercent}%`;
+        setBackgroundColor(cell, backgroundColor)
         return cell;
     }
 
