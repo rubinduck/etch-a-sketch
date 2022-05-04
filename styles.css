@@ -22,6 +22,7 @@ button:focus {
 
 :root {
     --main-size: 500px;
+    --ligth-gray: rgb(239, 239, 239);
 }
 
 @media (min-height: 700px){
@@ -68,11 +69,8 @@ body {
     font-size: 1.5rem;
     padding: 0.75rem 0.5rem;
     border-radius: 0.8rem;
+    background-color: var(--ligth-gray);
 }
-
-/* #clear-button {
-    margin-right: 2rem;
-} */
 
 /* hiding spin arrows */
 input[type="number"]::-webkit-outer-spin-button,
@@ -87,12 +85,13 @@ input[type="number"] {
 #side-size-input {
     background-color: rgb(239, 239, 239);
     color: black;
+    background-color: var(--ligth-gray);
     width: 3rem;
     text-align: center;
     font-size: 1.5rem;
     padding: 0.75rem 0.5rem;
     border-radius: 0.8rem;
-    border: 1px solid grey;
+    border: none
 }
 
 
