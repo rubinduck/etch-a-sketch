@@ -78,9 +78,9 @@ class Grid {
             cells.push(this.#createCell(cellSizeInPercent));
         cells.forEach(cell => {
             cell.addEventListener('mouseover',
-                (event) => this.handleMouseOverCell(event.currentTarget));
+                event => this.handleMouseOverCell(event.currentTarget));
             cell.addEventListener('mousedown',
-                (event) => {
+                event => {
                     this.isMouseDown = true;
                     this.handleMouseOverCell(event.currentTarget)
                 });
