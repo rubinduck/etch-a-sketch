@@ -46,7 +46,7 @@ const randomInt = (min, max) =>
 
 
 class Grid {
-    defaultColor = RGB.White;
+    cellDefaultColor = RGB.White;
     drawingColor = RGB.Black;
     isMouseDown = false;
     gridElement;
@@ -59,7 +59,8 @@ class Grid {
     }
 
     clear(){
-        this.cellElements.forEach(cell => setBackgroundColor(cell, this.defaultColor));
+        this.cellElements.forEach(
+            cell => setBackgroundColor(cell, this.cellDefaultColor));
     }
 
     resize(cellsPerSize){
@@ -85,7 +86,7 @@ class Grid {
                     this.isMouseDown = true;
                     this.handleMouseOverCell(event.currentTarget)
                 });
-            setBackgroundColor(cell, this.defaultColor)
+            setBackgroundColor(cell, this.cellDefaultColor)
         });
         return cells;
     }
