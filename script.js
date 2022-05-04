@@ -68,15 +68,15 @@ class Grid {
 
     #spawnGridCells(cellsPerSide){
         const cellAmount = cellsPerSide * cellsPerSide;
-        const cellSize = this.sideSizePx / cellsPerSide;
-        this.cellElements = this.#createCells(cellSize, cellAmount);
+        const cellSizeInPercent =  100 * (1 / cellsPerSide);
+        this.cellElements = this.#createCells(cellSizeInPercent, cellAmount);
         this.gridElement.replaceChildren(...this.cellElements);
     }
 
-    #createCells(cellSizePx, amount){
+    #createCells(cellSizeInPercent, amount){
         const cells = [];
         for (let i = 0; i < amount; i++)
-            cells.push(this.#createCell(cellSizePx));
+            cells.push(this.#createCell(cellSizeInPercent));
         cells.forEach(cell => {
             cell.addEventListener('mouseover',
                 (event) => this.handleMouseOverCell(event.currentTarget));
@@ -90,11 +90,11 @@ class Grid {
         return cells;
     }
 
-    #createCell(sizePx){
+    #createCell(sizeInPercent){
         const cell = document.createElement('div');
         cell.classList.add('cell');
-        cell.style.height = `${sizePx}px`;
-        cell.style.width = `${sizePx}px`;
+        cell.style.height = `${sizeInPercent}%`;
+        cell.style.width = `${sizeInPercent}%`;
         return cell;
     }
 
