@@ -52,8 +52,8 @@ class Grid {
     gridElement;
     cellElements = [];
     constructor(document, gridElement, cellsPerSide){
-        document.addEventListener('mousedown', () => grid.isMouseDown = true);
-        document.addEventListener('mouseup', () => grid.isMouseDown = false);
+        document.addEventListener('mousedown', () => this.isMouseDown = true);
+        document.addEventListener('mouseup', () => this.isMouseDown = false);
         this.gridElement = gridElement;
         this.#spawnGridCells(cellsPerSide);
     }
