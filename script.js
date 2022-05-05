@@ -12,9 +12,9 @@ class RGB {
         return `rgb(${this.red}, ${this.green}, ${this.blue})`;
     }
     
-    static genRandom(){
-        return new RGB(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255))
-    }
+    // static genRandom(){
+    //     return new RGB(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255))
+    // }
 
     static fromString(string){
         string = string
@@ -31,13 +31,14 @@ class RGB {
         );
     }
 
-    static average(a, b){
-        return new RGB(
-            Math.round((a.red + b.red) / 2),
-            Math.round((a.green + b.green) / 2),
-            Math.round((a.blue + b.blue) / 2)
-        )
-    }
+    // this code might be usefull later
+    // static average(a, b){
+    //     return new RGB(
+    //         Math.round((a.red + b.red) / 2),
+    //         Math.round((a.green + b.green) / 2),
+    //         Math.round((a.blue + b.blue) / 2)
+    //     )
+    // }
 }
 
 const randomInt = (min, max) =>
@@ -98,9 +99,10 @@ class Grid {
     }
 
     drawOnCell(cellElement){
-        const currentColor = getBackgroundColor(cellElement);
-        const newColor = RGB.average(currentColor, RGB.Black);
-        setBackgroundColor(cellElement, newColor)
+        //might be usefull later
+        // const currentColor = getBackgroundColor(cellElement);
+        // const newColor = RGB.average(currentColor, RGB.Black);
+        setBackgroundColor(cellElement, this.drawingColor);
     }
 }
 
