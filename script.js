@@ -51,7 +51,9 @@ class Grid {
     isMouseDown = false;
     gridElement;
     cellElements = [];
-    constructor(gridElement, cellsPerSide){
+    constructor(document, gridElement, cellsPerSide){
+        document.addEventListener('mousedown', () => grid.isMouseDown = true);
+        document.addEventListener('mouseup', () => grid.isMouseDown = false);
         this.gridElement = gridElement;
         this.#spawnGridCells(cellsPerSide);
     }
@@ -143,10 +145,7 @@ function handleResizeButton(grid, gridSizeElement){
 function main(){
     const gridElement = document.getElementById('cells-grid');
     const startCellsPerSideAmount = 16;
-    const grid = new Grid(gridElement, startCellsPerSideAmount);
-
-    document.addEventListener('mousedown', () => grid.isMouseDown = true);
-    document.addEventListener('mouseup', () => grid.isMouseDown = false);
+    const grid = new Grid(document, gridElement, startCellsPerSideAmount);
 
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) => grid.clear())
