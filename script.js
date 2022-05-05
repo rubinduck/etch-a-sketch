@@ -78,15 +78,6 @@ class Grid {
         const cells = [];
         for (let i = 0; i < amount; i++)
             cells.push(this.#createCell(cellSizeInPercent, this.cellDefaultColor));
-        cells.forEach(cell => {
-            cell.addEventListener('mouseover',
-                event => this.handleMouseOverCell(event.currentTarget));
-            cell.addEventListener('mousedown',
-                event => {
-                    this.isMouseDown = true;
-                    this.handleMouseOverCell(event.currentTarget)
-                });
-        });
         return cells;
     }
 
@@ -96,11 +87,17 @@ class Grid {
         cell.style.height = `${sizeInPercent}%`;
         cell.style.width = `${sizeInPercent}%`;
         setBackgroundColor(cell, backgroundColor)
+        cell.addEventListener('mouseover', event => this.handleMouseOverCell(event.currentTarget));
+        cell.addEventListener('mousedown', event => this.drawOnCell(event.currentTarget));
         return cell;
     }
 
     handleMouseOverCell(cellElement){
-        if (!this.isMouseDown) return;
+        if (this.isMouseDown)
+            this.drawOnCell(cellElement);
+    }
+
+    drawOnCell(cellElement){
         const currentColor = getBackgroundColor(cellElement);
         const newColor = RGB.average(currentColor, RGB.Black);
         setBackgroundColor(cellElement, newColor)
