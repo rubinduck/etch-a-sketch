@@ -149,7 +149,7 @@ function main(){
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) => grid.clear())
 
-    const gridSideSizeElement = document.getElementById('side-size-input');
+    const gridSideSizeElement = document.getElementById('size-input');
     gridSideSizeElement.addEventListener('input', fitlerNotInts)
     gridSideSizeElement.value = startCellsPerSideAmount;
 

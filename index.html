@@ -8,15 +8,15 @@
 </head>
 <body>
     <span class='text' id='draw-invitation'>To draw hover over and press left button</span>
-    <div class='grid-and-controls-container'>
+    <div id='grid-and-controls-container'>
         <div id='cells-grid'></div>
         <div id='control-panel'>
-            <div id='resize-controls'>
-                <input id='side-size-input' type='number' autocomplete='off'
+            <div id='resize-controls-container'>
+                <input id='size-input' type='number' autocomplete='off'
                 min='2' max='100'>
-                <button class='button' id='resize-button'>Resize field</button>
+                <button class='control-button' id='resize-button'>Resize</button>
             </div>
-            <button class='button' id='clear-button'>Clear</button>
+            <button class='control-button' id='clear-button'>Clear</button>
         </div>
     </div>
 </body>
