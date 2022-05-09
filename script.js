@@ -1,7 +1,4 @@
 class Color {
-    static Black = new Color(0, 0, 0);
-    static White = new Color(255, 255, 255);
-
     constructor(red, green, blue){
         this.red = red;
         this.green = green;
@@ -45,9 +42,26 @@ const randomInt = (min, max) =>
     Math.floor(Math.random() * (max - min) + min);
 
 
+const Colors = {
+    Black  : new Color(0, 0, 0),
+    White  : new Color(255, 255, 255),
+    Red    : new Color(255, 0, 0),
+    Lime   : new Color(0, 255, 0),
+    Blue   : new Color(0, 0, 255),
+    Yellow : new Color(255, 255, 0),
+    Silver : new Color(192, 192, 192),
+    Gray   : new Color(128, 128, 128),
+    Maroon : new Color(128, 0, 0),
+    Olive  : new Color(128, 128, 128),
+    Green  : new Color(0, 128, 128),
+    Purple : new Color(128, 0, 128),
+    Teal   : new Color(0, 128, 128),
+    Navy   : new Color(0, 0, 128),
+}
+
 class Canvas {
-    cellDefaultColor = Color.White;
-    drawingColor = Color.Black;
+    cellDefaultColor = Colors.White;
+    drawingColor = Colors.Black;
     isMouseDown = false;
     domElement;
     cellElements = [];
