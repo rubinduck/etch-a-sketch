@@ -45,18 +45,17 @@ const randomInt = (min, max) =>
     Math.floor(Math.random() * (max - min) + min);
 
 
-// TODO rename
-class Grid {
+class Canvas {
     cellDefaultColor = RGB.White;
     drawingColor = RGB.Black;
     isMouseDown = false;
-    gridElement;
+    domElement;
     cellElements = [];
-    constructor(document, gridElement, cellsPerSide){
+    constructor(document, domElement, cellsPerSide){
         document.addEventListener('mousedown', () => this.isMouseDown = true);
         document.addEventListener('mouseup', () => this.isMouseDown = false);
-        this.gridElement = gridElement;
-        this.#spawnGridCells(cellsPerSide);
+        this.domElement = domElement;
+        this.#spawnCanvasCells(cellsPerSide);
     }
 
     clear(){
@@ -65,14 +64,14 @@ class Grid {
     }
 
     resize(cellsPerSize){
-        this.#spawnGridCells(cellsPerSize);
+        this.#spawnCanvasCells(cellsPerSize);
     }
 
-    #spawnGridCells(cellsPerSide){
+    #spawnCanvasCells(cellsPerSide){
         const cellAmount = cellsPerSide * cellsPerSide;
         const cellSizeInPercent =  100 * (1 / cellsPerSide);
         this.cellElements = this.#createCells(cellSizeInPercent, cellAmount);
-        this.gridElement.replaceChildren(...this.cellElements);
+        this.domElement.replaceChildren(...this.cellElements);
     }
 
     #createCells(cellSizeInPercent, amount){
@@ -133,28 +132,28 @@ function fitlerNotInts(event){
 }
 
 
-function handleSizeInput(sizeView, sizeInput, grid){
+function handleSizeInput(sizeView, sizeInput, canvas){
     const newSize = sizeInput.value;
     sizeView.textContent = `${newSize}x${newSize}`;
-    grid.resize(newSize);
+    canvas.resize(newSize);
 }
 
 
 function main(){
-    const gridElement = document.getElementById('cells-grid');
+    const canvasElement = document.getElementById('canvas');
     const startCellsPerSideAmount = 16;
-    const grid = new Grid(document, gridElement, startCellsPerSideAmount);
+    const canvas = new Canvas(document, canvasElement, startCellsPerSideAmount);
 
     const clearButton = document.getElementById('clear-button');
-    clearButton.addEventListener('click',(e) => grid.clear())
+    clearButton.addEventListener('click',(e) => canvas.clear())
 
     // TODO maybe rename element
     const sizeScale = document.getElementById('size-scale');
     const sizeView = document.getElementById('size-view');
     sizeScale.addEventListener('input',
-        e => handleSizeInput(sizeView, sizeScale, grid));
+        e => handleSizeInput(sizeView, sizeScale, canvas));
     sizeScale.value = startCellsPerSideAmount;
-    handleSizeInput(sizeView, sizeScale, grid);
+    handleSizeInput(sizeView, sizeScale, canvas);
 }
 
 main();

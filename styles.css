@@ -20,13 +20,13 @@ button:focus {
 
 /* page general styles */
 :root {
-    --drawing-field-size: 500px;
+    --canvas-size: 500px;
     --ligth-gray: rgb(239, 239, 239);
 }
 
 @media (min-height: 700px){
     :root {
-        --drawing-field-size: 700px;
+        --canvas-size: 700px;
     }
 }
 
@@ -57,19 +57,19 @@ body {
 
 
 /* main part container */
-#grid-and-controls-container {
+#canvas-and-controls-container {
     display: flex;
     flex-direction: row;
     gap: 1rem;
 }
 
 
-/* drawing grid */
-#cells-grid {
+/* drawing canvas */
+#canvas {
     display: flex;
     flex-wrap: wrap;
-    width: var(--drawing-field-size);
-    height: var(--drawing-field-size);
+    width: var(--canvas-size);
+    height: var(--canvas-size);
     border: 1px solid black;
     background-color: white;
 }
