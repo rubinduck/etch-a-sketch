@@ -1,6 +1,6 @@
-class RGB {
-    static Black = new RGB(0, 0, 0);
-    static White = new RGB(255, 255, 255);
+class Color {
+    static Black = new Color(0, 0, 0);
+    static White = new Color(255, 255, 255);
 
     constructor(red, green, blue){
         this.red = red;
@@ -23,7 +23,7 @@ class RGB {
             .replace('(', '')
             .replace(')', '');
         const colors = string.split(',');
-        return new RGB(
+        return new Color(
             Number.parseInt(colors[0]),
             Number.parseInt(colors[1]),
             Number.parseInt(colors[2]),
@@ -46,8 +46,8 @@ const randomInt = (min, max) =>
 
 
 class Canvas {
-    cellDefaultColor = RGB.White;
-    drawingColor = RGB.Black;
+    cellDefaultColor = Color.White;
+    drawingColor = Color.Black;
     isMouseDown = false;
     domElement;
     cellElements = [];
@@ -111,7 +111,7 @@ function setBackgroundColor(element, rgbColor){
 }
 
 function getBackgroundColor(element){
-    return RGB.fromString(window.getComputedStyle(element).backgroundColor);
+    return Color.fromString(window.getComputedStyle(element).backgroundColor);
 }
 
 function fitlerNotInts(event){
