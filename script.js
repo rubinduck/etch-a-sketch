@@ -45,7 +45,7 @@ const randomInt = (min, max) =>
     Math.floor(Math.random() * (max - min) + min);
 
 
-
+// TODO rename
 class Grid {
     cellDefaultColor = RGB.White;
     drawingColor = RGB.Black;
@@ -132,14 +132,13 @@ function fitlerNotInts(event){
     }
 }
 
-function handleResizeButton(grid, gridSizeElement){
-    const newSideSize = Number.parseInt(gridSizeElement.value);
-    if (newSideSize < 2 || newSideSize > 100){
-        alert('Side must be between 2 and 100');
-        return;
-    }
-    grid.resize(newSideSize)
+
+function handleSizeInput(sizeView, sizeInput, grid){
+    const newSize = sizeInput.value;
+    sizeView.textContent = `${newSize}x${newSize}`;
+    grid.resize(newSize);
 }
+
 
 function main(){
     const gridElement = document.getElementById('cells-grid');
@@ -149,12 +148,13 @@ function main(){
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) => grid.clear())
 
-    const gridSideSizeElement = document.getElementById('size-input');
-    gridSideSizeElement.addEventListener('input', fitlerNotInts)
-    gridSideSizeElement.value = startCellsPerSideAmount;
-
-    const resizeButton = document.getElementById('resize-button');
-    resizeButton.addEventListener('click', (e) => handleResizeButton(grid, gridSideSizeElement));
+    // TODO maybe rename element
+    const sizeScale = document.getElementById('size-scale');
+    const sizeView = document.getElementById('size-view');
+    sizeScale.addEventListener('input',
+        e => handleSizeInput(sizeView, sizeScale, grid));
+    sizeScale.value = startCellsPerSideAmount;
+    handleSizeInput(sizeView, sizeScale, grid);
 }
 
 main();

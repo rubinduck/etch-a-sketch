@@ -11,10 +11,9 @@
     <div id='grid-and-controls-container'>
         <div id='cells-grid'></div>
         <div id='control-panel'>
-            <div id='resize-controls-container'>
-                <input id='size-input' type='number' autocomplete='off'
-                min='2' max='100'>
-                <button class='control-button' id='resize-button'>Resize</button>
+            <div id='size-controls'>
+                <div id='size-view'></div>
+                <input id='size-scale' type='range' min='2' max='100'></input>
             </div>
             <button class='control-button' id='clear-button'>Clear</button>
         </div>

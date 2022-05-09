@@ -86,6 +86,8 @@ elements behaviour */
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    font-size: 2rem;
+    color: white
 }
 
 .control-button {
@@ -93,30 +95,4 @@ elements behaviour */
     border-radius: 0.8rem;
     font-size: 1.5rem;
     background-color: var(--ligth-gray);
-}
-
-/* hiding spin arrows */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    display: none;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-#resize-controls-container {
-    display: flex;
-    gap: 0.5rem;
-}
-
-#size-input {
-    width: 3rem;
-    padding: 0.75rem 0.5rem;
-    border-radius: 0.8rem;
-    border: none;
-    font-size: 1.5rem;
-    text-align: center;
-    background-color: var(--ligth-gray);
-    color: black;
 }
