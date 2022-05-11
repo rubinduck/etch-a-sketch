@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Etch a sketch</title>
+    <link rel='stylesheet' href='styles.css'>
+    <script defer src='script.js'></script>
+</head>
+<body>
+    <span class='text' id='draw-invitation'>To draw hover over and press left button</span>
+    <div id='canvas-and-controls-container'>
+        <div id='canvas'></div>
+        <div id='control-panel'>
+            <div id='size-controls'>
+                <div id='size-view'></div>
+                <input id='size-range' type='range' min='2' max='100'></input>
+            </div>
+            <div id='clear-and-eraser-container'>
+                <button class='control-button' id='clear-button'>Clear</button>
+                <img id='eraser' src='./eraser.png' alt='eraser'>
+            </div>
+            <div id='color-panel'></div>
+        </div>
+    </div>
+</body>
+</html>
