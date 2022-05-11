@@ -125,7 +125,7 @@ function handleSizeInput(sizeView, sizeRangeElement, canvas){
 
 function generateColorOptions(colors){
     const colorOptions = []
-    for (color of colors)
+    for (let color of colors)
         colorOptions.push(createColorOptionElement(color));
     return colorOptions;
 }
