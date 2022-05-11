@@ -115,23 +115,6 @@ function getBackgroundColor(element){
     return Color.fromString(window.getComputedStyle(element).backgroundColor);
 }
 
-function fitlerNotInts(event){
-    if (!event.data)
-        return;
-    const newData = event.data;
-    const target = event.currentTarget;
-    if (!isInt(newData))
-        target.value = target.value.replace(newData, '');
-
-    function isInt(string){
-        for (let char of string){
-            if (char < '0' || char > '9')
-                return false;
-        }
-        return true;
-    }
-}
-
 
 function handleSizeInput(sizeView, sizeRangeElement, canvas){
     const newSize = sizeRangeElement.value;
