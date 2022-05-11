@@ -26,6 +26,7 @@ class Color {
     }
 }
 
+const TransparentColor = new Color(0, 0, 0, 0);
 const Colors = new Map([
     ['Black', new Color(0, 0, 0)],
     ['White', new Color(255, 255, 255)],
@@ -44,8 +45,8 @@ const Colors = new Map([
     ['BlueViolet', new Color(138, 43, 226)],
 ]);
 
+
 class Canvas {
-    cellDefaultColor = Colors.get('White');
     drawingColor = Colors.get('Black');
     isMouseDown = false;
     domElement;
@@ -59,7 +60,7 @@ class Canvas {
 
     clear(){
         this.cellElements.forEach(
-            cell => setBackgroundColor(cell, this.cellDefaultColor));
+            cell => setBackgroundColor(cell, TransparentColor));
     }
 
     resize(cellsPerSize){
@@ -80,7 +81,7 @@ class Canvas {
     #createCells(cellSizeInPercent, amount){
         const cells = [];
         for (let i = 0; i < amount; i++)
-            cells.push(this.#createCell(cellSizeInPercent, this.cellDefaultColor));
+            cells.push(this.#createCell(cellSizeInPercent, TransparentColor));
         return cells;
     }
 
@@ -163,7 +164,7 @@ function main(){
 
     const eraserElement = document.getElementById('eraser');
     eraserElement.addEventListener('click', e =>
-        canvas.setDrawingColor(new Color(0, 0, 0, 0)));
+        canvas.setDrawingColor(TransparentColor);
 
     const sizeRangeElement = document.getElementById('size-range');
     const sizeView = document.getElementById('size-view');
