@@ -96,3 +96,15 @@ elements behaviour */
     font-size: 1.5rem;
     background-color: var(--ligth-gray);
 }
+
+#color-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    gap: 0.25rem;
+}
+
+.color {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
