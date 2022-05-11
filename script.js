@@ -8,10 +8,6 @@ class Color {
     toString(){
         return `rgb(${this.red}, ${this.green}, ${this.blue})`;
     }
-    
-    // static genRandom(){
-    //     return new RGB(randomInt(0, 255), randomInt(0, 255), randomInt(0, 255))
-    // }
 
     static fromString(string){
         string = string
@@ -27,15 +23,6 @@ class Color {
             
         );
     }
-
-    // this code might be usefull later
-    // static average(a, b){
-    //     return new RGB(
-    //         Math.round((a.red + b.red) / 2),
-    //         Math.round((a.green + b.green) / 2),
-    //         Math.round((a.blue + b.blue) / 2)
-    //     )
-    // }
 }
 
 const randomInt = (min, max) =>
@@ -117,9 +104,6 @@ class Canvas {
     }
 
     drawOnCell(cellElement){
-        //might be usefull later
-        // const currentColor = getBackgroundColor(cellElement);
-        // const newColor = RGB.average(currentColor, RGB.Black);
         setBackgroundColor(cellElement, this.drawingColor);
     }
 }
