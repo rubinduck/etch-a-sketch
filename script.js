@@ -122,7 +122,6 @@ function handleSizeInput(sizeView, sizeRangeElement, canvas){
     canvas.resize(newSize);
 }
 
-
 function generateColorOptions(colors){
     const colorOptions = []
     for (let color of colors)
@@ -143,7 +142,7 @@ function main(){
     const canvas = new Canvas(document, canvasElement, startCellsPerSideAmount);
 
     const clearButton = document.getElementById('clear-button');
-    clearButton.addEventListener('click',(e) => canvas.clear())
+    clearButton.addEventListener('click',e => canvas.clear())
 
     const eraserElement = document.getElementById('eraser');
     eraserElement.addEventListener('click', e =>
@@ -162,7 +161,7 @@ function main(){
     colorOptions.forEach(option => option.addEventListener('click', e => {
         const option = e.currentTarget;
         canvas.setDrawingColor(getBackgroundColor(option));
-    } ))
+    }))
 }
 
 main();
