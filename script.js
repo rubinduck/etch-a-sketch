@@ -165,6 +165,10 @@ function main(){
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) => canvas.clear())
 
+    const eraserElement = document.getElementById('eraser');
+    eraserElement.addEventListener('click', e =>
+        canvas.setDrawingColor(new Color(0, 0, 0, 0)));
+
     const sizeRangeElement = document.getElementById('size-range');
     const sizeView = document.getElementById('size-view');
     sizeRangeElement.addEventListener('input',

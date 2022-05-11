@@ -97,6 +97,18 @@ elements behaviour */
     background-color: var(--ligth-gray);
 }
 
+#clear-and-eraser-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#eraser {
+    display: block;
+    height: 80%;
+    cursor: pointer;
+}
+
 #color-panel {
     display: grid;
     grid-template-columns: repeat(3, 50px);
