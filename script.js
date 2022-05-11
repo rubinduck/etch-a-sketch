@@ -125,15 +125,15 @@ function handleSizeInput(sizeView, sizeRangeElement, canvas){
 function generateColorOptions(colors){
     const colorOptions = []
     for (let color of colors)
-        colorOptions.push(createColorOptionElement(color));
+        colorOptions.push(createColorOption(color));
     return colorOptions;
-}
 
-function createColorOptionElement(color){
-    const colorElement = document.createElement('div');
-    colorElement.classList.add('color');
-    setBackgroundColor(colorElement, color);
-    return colorElement;
+    function createColorOption(color){
+        const colorElement = document.createElement('div');
+        colorElement.classList.add('color');
+        setBackgroundColor(colorElement, color);
+        return colorElement;
+    }
 }
 
 function main(){
