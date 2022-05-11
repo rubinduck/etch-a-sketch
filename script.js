@@ -26,10 +26,6 @@ class Color {
     }
 }
 
-const randomInt = (min, max) =>
-    Math.floor(Math.random() * (max - min) + min);
-
-
 const Colors = new Map([
     ['Black', new Color(0, 0, 0)],
     ['White', new Color(255, 255, 255)],
