@@ -22,6 +22,7 @@ button:focus {
 :root {
     --canvas-size: 500px;
     --ligth-gray: rgb(239, 239, 239);
+    --darker-gray: rgb(214, 213, 213);
 }
 
 @media (min-height: 700px){
@@ -95,6 +96,11 @@ elements behaviour */
     border-radius: 0.8rem;
     font-size: 1.5rem;
     background-color: var(--ligth-gray);
+    cursor: pointer;
+}
+
+.control-button:hover {
+    background-color: var(--darker-gray);
 }
 
 #clear-and-eraser-container {
