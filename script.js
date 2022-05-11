@@ -1,27 +1,28 @@
 class Color {
-    constructor(red, green, blue){
+    constructor(red, green, blue, opacity=1){
         this.red = red;
         this.green = green;
         this.blue = blue;
+        this.opacity = opacity
     }
 
     toString(){
-        return `rgb(${this.red}, ${this.green}, ${this.blue})`;
+        if (this.opacity === 1)
+            return `rgb(${this.red}, ${this.green}, ${this.blue})`;
+        return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.opacity})`;
     }
 
     static fromString(string){
+        string = string.trim();
+        if (string.startsWith('rgb'))
+            string = string.replace('rgb(', '');
+        else
+            string = string.replace('rgba(', '');
         string = string
-            .replace('rgba', '')
-            .replace('rgb', '')
-            .replace('(', '')
-            .replace(')', '');
-        const colors = string.split(',');
-        return new Color(
-            Number.parseInt(colors[0]),
-            Number.parseInt(colors[1]),
-            Number.parseInt(colors[2]),
-            
-        );
+            .replace(')', '')
+            .replace(' ', '');
+        const args = string.split(',');
+        return new Color(...args);
     }
 }
 
