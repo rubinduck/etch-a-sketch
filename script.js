@@ -147,7 +147,7 @@ function main(){
 
     const eraserElement = document.getElementById('eraser');
     eraserElement.addEventListener('click', e =>
-        canvas.setDrawingColor(TransparentColor);
+        canvas.setDrawingColor(TransparentColor));
 
     const sizeRangeElement = document.getElementById('size-range');
     const sizeView = document.getElementById('size-view');
