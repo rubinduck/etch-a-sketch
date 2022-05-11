@@ -126,3 +126,8 @@ elements behaviour */
     height: 50px;
     cursor: pointer;
 }
+
+#eraser:hover,
+.color:hover {
+    transform: translate(0, -2px);
+}
