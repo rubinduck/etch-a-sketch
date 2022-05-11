@@ -135,8 +135,8 @@ function fitlerNotInts(event){
 }
 
 
-function handleSizeInput(sizeView, sizeInput, canvas){
-    const newSize = sizeInput.value;
+function handleSizeInput(sizeView, sizeRangeElement, canvas){
+    const newSize = sizeRangeElement.value;
     sizeView.textContent = `${newSize}x${newSize}`;
     canvas.resize(newSize);
 }
@@ -164,13 +164,12 @@ function main(){
     const clearButton = document.getElementById('clear-button');
     clearButton.addEventListener('click',(e) => canvas.clear())
 
-    // TODO maybe rename element
-    const sizeScale = document.getElementById('size-scale');
+    const sizeRangeElement = document.getElementById('size-range');
     const sizeView = document.getElementById('size-view');
-    sizeScale.addEventListener('input',
-        e => handleSizeInput(sizeView, sizeScale, canvas));
-    sizeScale.value = startCellsPerSideAmount;
-    handleSizeInput(sizeView, sizeScale, canvas);
+    sizeRangeElement.addEventListener('input',
+        e => handleSizeInput(sizeView, sizeRangeElement, canvas));
+    sizeRangeElement.value = startCellsPerSideAmount;
+    handleSizeInput(sizeView, sizeRangeElement, canvas);
 
     const colorPanel = document.getElementById('color-panel');
     const colorOptions = generateColorOptions(Colors.values());
