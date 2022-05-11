@@ -125,7 +125,7 @@ function handleSizeInput(sizeView, sizeRangeElement, canvas){
 function generateColorOptions(colors){
     const colorOptions = []
     for (let color of colors)
-        colorOptions.push(createColorOption(color));
+        colorOptions.push(createColorOptionElement(color));
     return colorOptions;
 
     function createColorOption(color){
@@ -141,13 +141,6 @@ function main(){
     const startCellsPerSideAmount = 16;
     const canvas = new Canvas(document, canvasElement, startCellsPerSideAmount);
 
-    const clearButton = document.getElementById('clear-button');
-    clearButton.addEventListener('click',e => canvas.clear())
-
-    const eraserElement = document.getElementById('eraser');
-    eraserElement.addEventListener('click', e =>
-        canvas.setDrawingColor(TransparentColor));
-
     const sizeRangeElement = document.getElementById('size-range');
     const sizeView = document.getElementById('size-view');
     sizeRangeElement.addEventListener('input',
@@ -155,13 +148,20 @@ function main(){
     sizeRangeElement.value = startCellsPerSideAmount;
     handleSizeInput(sizeView, sizeRangeElement, canvas);
 
+    const clearButton = document.getElementById('clear-button');
+    clearButton.addEventListener('click', e => canvas.clear())
+
+    const eraserElement = document.getElementById('eraser');
+    eraserElement.addEventListener('click',
+        e => canvas.setDrawingColor(TransparentColor));
+
     const colorPanel = document.getElementById('color-panel');
     const colorOptions = generateColorOptions(Colors.values());
-    colorPanel.replaceChildren(...colorOptions);
     colorOptions.forEach(option => option.addEventListener('click', e => {
         const option = e.currentTarget;
         canvas.setDrawingColor(getBackgroundColor(option));
-    }))
+    }));
+    colorPanel.replaceChildren(...colorOptions);
 }
 
 main();
